@@ -1,0 +1,1 @@
+(function(n){const i=n["ca"]=n["ca"]||{};i.dictionary=Object.assign(i.dictionary||{},{Bold:"Negreta",Italic:"Cursiva",Underline:"Subrallat"});i.getPluralForm=function(n){return n!=1}})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
