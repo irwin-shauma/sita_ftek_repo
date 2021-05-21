@@ -35,81 +35,6 @@ use Terbilang;
 
 class MahasiswaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
     // -----------------------------------------------------------------------------------------------
     // Bagian Pilih Pembimbing
@@ -143,7 +68,6 @@ class MahasiswaController extends Controller
             ->update(['progress' => 0]);
 
         $dsn = Dosen::where('id', $data['pilih_dosen1'])->get();
-        // dd($dsn);
         $mhs->dosens()->attach($dsn, ['dosen2_id' => $data['pilih_dosen2']]);
         return redirect()->back()->with('success', 'Anda berhasil memilih pembimbing!');
     }
@@ -436,8 +360,6 @@ class MahasiswaController extends Controller
             'check_korkon',
             'check_mhs_send',
         )->orderByDesc('mhs_id')->get();
-        // dd($kolokium_awal_status[0]->check_mhs_send);
-
         $check_korkon = Kolokium_awal::where('mhs_id', $mhs[0]->id)->value('check_korkon');
         $check_nama = [
             'check_kartu_studi_tetap' => "Kartu Studi Tetap",
@@ -485,8 +407,6 @@ class MahasiswaController extends Controller
             'korkon_telkom' => "Korkon Telekomunikasi",
             'korkon_tek_kom' => "Korkon Teknik Komputer",
         ];
-        // dd($korkon_list);
-        // dd($kolokim_awal_status);
         return view('mahasiswa.kolokium_awal.berkas', compact(
             'mhs',
             'progress',
@@ -503,16 +423,11 @@ class MahasiswaController extends Controller
     // public function kolokium_awal_berkas_upload(Request $request)
     {
         $validated = $request->validated();
-        // dd($validated);
-        // $id = Auth::user()->id;
         $mhs = Mahasiswa::where('user_id', $validated['id_mhs'])->get();
-        // $nim_mhs = $mhs[0]->nim;
         $nim_mhs = $validated['nim_mhs'];
-
 
         if ($validated['check_korkon'] < 1 || $validated['check_korkon'] == null) {
             // Mengubah nama file dan simpan file.
-
             $file = $validated['kartu_studi_tetap'];
             $filename = "1. KST_" . $nim_mhs . "." . $file->extension();
             $path = Storage::putFileAs("PenyimpananData/$nim_mhs/Kolokium_Awal/berkas", $file, $filename);
@@ -537,7 +452,7 @@ class MahasiswaController extends Controller
             $filename6 = "6. Lembar_Reviewer_" . $nim_mhs . "." . $file6->extension();
             $path6 = Storage::putFileAs("PenyimpananData/$nim_mhs/Kolokium_Awal/berkas", $file6, $filename6);
 
-            // // Yang ini disesuaiin sama yang ada di dtbase
+            // Yang ini disesuaiin sama yang ada di dtbase
             $data = [
                 'tipe_korkon' => $validated['tipe_korkon'],
                 'kartu_studi_tetap' => $filename,
@@ -548,7 +463,6 @@ class MahasiswaController extends Controller
                 'lembar_reviewer' => $filename6,
                 'check_korkon' => 0,
                 'check_mhs_send' => 0,
-                // 'progress' => 1,
             ];
             $id_kolokium_awal = Kolokium_awal::where('mhs_id', $validated['id_mhs'])->value('id');
             $data_kolokium = Kolokium_awal::where('id', $id_kolokium_awal)
@@ -556,7 +470,6 @@ class MahasiswaController extends Controller
             $progress = Mahasiswa::where('id', $validated['id_mhs'])
                 ->update(['progress' => 1]);
         } else {
-            # code...
 
             $kolokium_awal_status = Kolokium_awal::where('mhs_id', $validated['id_mhs'])->select(
                 'check_kartu_studi_tetap',
@@ -607,7 +520,6 @@ class MahasiswaController extends Controller
         // return redirect()->route('home')->with('success', 'Anda berhasil mengupload berkas kolokium awal!');
     }
     // -----------------------------------------------------------------------------------------------------------
-
 
     // -----------------------------------------------------------------------------------------------
     // Bagian Kolokium Lanjut Proposal & Berkas
@@ -660,7 +572,6 @@ class MahasiswaController extends Controller
             } else {
                 if ($data_proposal_seen_last->review_acc1 == 1 && $data_proposal_seen_last->review_acc2 == 1) {
                     $cond = 10;
-                    // $data_proposal_seen_last->update(['check_mhs_send' => 1]);
                 }
                 if ($data_proposal_seen_last->review_check1 == 1 && $data_proposal_seen_last->review_check2 == 1) {
                     $cond = 6;
@@ -670,13 +581,10 @@ class MahasiswaController extends Controller
                     $cond = 8;
                     if ($data_proposal_seen_last->acc1 == 1 && $data_proposal_seen_last->acc2 == 1) {
                         $cond = 9;
-                        // $data_proposal_seen_last->update(['check_mhs_send' => 1]);
                     }
                 }
             }
         }
-
-        // dd($mhs[0]->progress);
         return view('mahasiswa.kolokium_lanjut.proposal', compact('mhs', 'cond', 'data_proposal', 'data_proposal_seen_last'));
     }
 
@@ -702,7 +610,6 @@ class MahasiswaController extends Controller
             ->where('check_mhs_send', 1)
             ->get();
         if ($cek_kirim->count() != 0) {
-            // dd('mantap');
             Proposal_lanjut::create([
                 'mhs_id' => $mhs[0]->id,
                 'nomor_revisi' => $nomor_revisi,
@@ -735,15 +642,12 @@ class MahasiswaController extends Controller
             ->where('review_check1', 1)
             ->where('review_check2', 1)
             ->pluck('created_at');
-        // dd($cek_tanggal_review);
-
         if ($cek_tanggal_review->count() != 0) {
             $data_proposal_check_acc1 = Proposal_lanjut::where('mhs_id', $mhs[0]->id)
                 ->where('acc1', 1)
                 ->where('created_at', '>', $cek_tanggal_review)
                 ->where('sender', $validated['name_mhs'])
                 ->get();
-            // dd($data_proposal_check_acc1);
             $data_proposal_check_acc2 = Proposal_lanjut::where('mhs_id', $mhs[0]->id)
                 ->where('acc2', 1)
                 ->where('created_at', '>', $cek_tanggal_review)
@@ -782,7 +686,6 @@ class MahasiswaController extends Controller
         $data_proposal_check_acc1 = Proposal_lanjut::where('mhs_id', $mhs[0]->id)
             ->where('acc1', 1)
             ->get();
-        // dd($data_proposal_check_acc1->count() != 0);
         $data_proposal_check_acc2 = Proposal_lanjut::where('mhs_id', $mhs[0]->id)
             ->where('acc2', 1)
             ->get();
@@ -833,7 +736,6 @@ class MahasiswaController extends Controller
         $mhs = Mahasiswa::where('user_id', $id)->get();
         $file = $request->file_proposal;
         $dosen_pembimbing = $request->sender;
-
         $nim = $mhs[0]->nim;
         if (Storage::disk('local')->exists("PenyimpananData/$nim/Kolokium_Lanjut/Proposal/$file")) {
             return Storage::download("PenyimpananData/$nim/Kolokium_Lanjut/Proposal/$file");
@@ -854,7 +756,6 @@ class MahasiswaController extends Controller
         $mhs = Mahasiswa::where('user_id', $id)->get();
         $progress = $mhs[0]->progress;
         $tipe_korkon = Kolokium_awal::where('mhs_id', $mhs[0]->id)->pluck('tipe_korkon');
-        // dd($tipe_korkon[0]);
         $kolokium_lanjut_status = Kolokium_lanjut::where('mhs_id', $mhs[0]->id)->select(
             'check_proposal_lanjut',
             'check_surat_tugas',
@@ -889,10 +790,8 @@ class MahasiswaController extends Controller
     public function kolokium_lanjut_berkas_upload(KolokiumLanjutRequest $request)
     {
         $validated = $request->validated();
-        // dd($validated);
         $mhs = Mahasiswa::where('user_id', $validated['id_mhs'])->get();
         $nim_mhs = $validated['nim_mhs'];
-
         if ($validated['check_korkon'] < 1 || $validated['check_korkon'] == null) {
             // Mengubah nama file dan simpan file.
             $file = $validated['proposal_lanjut'];
@@ -902,7 +801,6 @@ class MahasiswaController extends Controller
             $file2 = $validated['surat_tugas'];
             $filename2 = "2. Surat_Tugas_" . $nim_mhs . "." . $file2->extension();
             $path2 = Storage::putFileAs("PenyimpananData/$nim_mhs/Kolokium_Lanjut/berkas", $file2, $filename2);
-
             // // Yang ini disesuaiin sama yang ada di dtbase
             $data = [
                 'proposal_lanjut' => $filename,
@@ -949,14 +847,9 @@ class MahasiswaController extends Controller
         return redirect()->back()->with('success', 'Anda berhasil mengupload berkas kolokium lanjut!');;
         // return redirect()->route('home')->with('success', 'Anda berhasil mengupload berkas kolokium lanjut!');;
     }
-
-    // -----------------------------------------------------------------------------------------
-
-
     // -----------------------------------------------------------------------------------------------
     // Bagian Pengajuan Review & Berkas
     // -----------------------------------------------------------------------------------------------
-
     public function pengajuan_review_paper()
     {
         $id = Auth::user()->id;
@@ -1001,7 +894,6 @@ class MahasiswaController extends Controller
             } else {
                 if ($data_review_seen_last->review_acc1 == 1 && $data_review_seen_last->review_acc2 == 1) {
                     $cond = 10;
-                    // $data_review_seen_last->update(['check_mhs_send' => 1]);
                 }
                 if ($data_review_seen_last->review_check1 == 1 && $data_review_seen_last->review_check2 == 1) {
                     $cond = 6;
@@ -1011,7 +903,6 @@ class MahasiswaController extends Controller
                     $cond = 8;
                     if ($data_review_seen_last->acc1 == 1 && $data_review_seen_last->acc2 == 1) {
                         $cond = 9;
-                        // $data_proposal_seen_last->update(['check_mhs_send' => 1]);
                     }
                 }
             }

@@ -7,12 +7,6 @@
     <title>Header Surat Tugas</title>
 </head>
 <body>
-    {{-- <tr>
-        <td>
-            
-            <img src="{{ public_path("kop_surat.png") }}" alt="" width="900">
-        </td>
-    </tr> --}}
 
     <img src="{{ public_path("kop_surat.png") }}" alt="" width="900">
     <hr>

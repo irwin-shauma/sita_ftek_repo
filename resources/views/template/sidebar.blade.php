@@ -10,8 +10,6 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
                 @can('mahasiswa')
                     <li class="nav-item">
                     <a href="{{ route('pilih_pembimbing') }}" class="nav-link">
@@ -21,7 +19,6 @@
                         </p>
                     </a>
                     </li>
-
                     <li class="nav-item has-treeview ml-n2">
                         <a href="#" class="nav-link ">
                         <i class="nav-icon fa fa-bars"></i>
@@ -37,7 +34,6 @@
                                 <p>Proposal Awal</p>
                             </a>
                             </li>
-
                             <li class="nav-item">
                             <a href="{{ route('kolokium_awal_berkas') }}" class="nav-link">
                                 <i class="nav-icon fas fa-file-archive"></i>
@@ -46,7 +42,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item ml-n2">
                     <a href="{{ route('cetak_surat_tugas') }}" class="nav-link">
                         <i class="nav-icon fas fa-print"></i>
@@ -55,7 +50,6 @@
                         </p>
                     </a>
                     </li>
-
                     <li class="nav-item has-treeview ml-n2">
                         <a href="#" class="nav-link ">
                         <i class="nav-icon fa fa-bars"></i>
@@ -71,7 +65,6 @@
                                 <p>Proposal Lanjut</p>
                             </a>
                             </li>
-
                             <li class="nav-item">
                             <a href="{{ route('kolokium_lanjut_berkas') }}" class="nav-link">
                                 <i class="nav-icon fas fa-file-archive"></i>
@@ -80,7 +73,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item has-treeview ml-n2">
                         <a href="#" class="nav-link ">
                         <i class="nav-icon fa fa-bars"></i>
@@ -105,7 +97,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item ml-n2">
                     <a href="{{ route('pengajuan_publikasi_berkas') }}" class="nav-link">
                         <i class="nav-icon fas fa-file-archive"></i>
@@ -177,9 +168,7 @@
                         </ul>
                     </li>
 
-                    {{-- @can('korkon') --}}
                     @canany('korkon_elektro')
-                    {{-- @canany(['korkon_elektro', 'korkon_telkom', 'korkon_tek_kom'] ) --}}
                         <li class="nav-item has-treeview ml-n2">
                             <a href="#" class="nav-link ">
                             <i class="nav-icon fas fa-home"></i>
@@ -386,7 +375,6 @@
                 @endcan
 
                 @can('adminTU')
-            
                 <li class="nav-item has-treeview ml-n2">
                     <a href="#" class="nav-link ">
                     <i class="nav-icon fas fa-book"></i>
@@ -396,28 +384,24 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview ml-2">
-                    
                         <li class="nav-item">
                         <a href="{{ route('tambah_user') }}" class="nav-link">
                             <i class="fas fa-user-plus nav-icon"></i>
                             <p>Tambah User</p>
                         </a>
                         </li>
-
                         <li class="nav-item">
                         <a href="{{ route('daftar_mahasiswa') }}" class="nav-link">
                             <i class="fa fa-users nav-icon"></i>
                             <p>Daftar Mahasiswa</p>
                         </a>
                         </li>
-
                         <li class="nav-item">
                         <a href="{{ route('daftar_dosen') }}" class="nav-link">
                             <i class="fas fa-users nav-icon"></i>
                             <p>Daftar Dosen</p>
                         </a>
                         </li>
-
                         <li class="nav-item">
                         <a href="{{ route('tambah_permissions') }}" class="nav-link">
                             <i class="fas fa-user-plus nav-icon"></i>
@@ -426,7 +410,6 @@
                         </li>
                     </ul>
                 </li>
-            
                 <li class="nav-item has-treeview ml-n2">
                     <a href="#" class="nav-link ">
                     <i class="nav-icon far fa-check-circle"></i>
@@ -436,28 +419,12 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview ml-2">
-                    
-                        {{-- <li class="nav-item">
-                        <a href="{{ route('korkon_elektro_verif_kolokium_awal') }}" class="nav-link">
-                            <i class="fas fa-vote-yea nav-icon"></i>
-                            <p>Kolokium Awal</p>
-                        </a>
-                        </li>
-
-                        <li class="nav-item">
-                        <a href="{{ route('korkon_elektro_verif_kolokium_lanjut') }}" class="nav-link">
-                            <i class="fas fa-vote-yea nav-icon"></i>
-                            <p>Kolokium Lanjut</p>
-                        </a>
-                        </li> --}}
-
                         <li class="nav-item">
                         <a href="{{ route('verif_pengajuan_review') }}" class="nav-link">
                             <i class="fas fa-vote-yea nav-icon"></i>
                             <p>Pengajuan Review</p>
                         </a>
                         </li>
-
                         <li class="nav-item">
                         <a href="{{ route('verif_pengajuan_nilai_publikasi') }}" class="nav-link">
                             <i class="fas fa-vote-yea nav-icon"></i>
@@ -477,7 +444,5 @@
                 @endcan
             </ul>
         </nav>
-    <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>

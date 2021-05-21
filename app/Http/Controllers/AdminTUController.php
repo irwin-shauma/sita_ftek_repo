@@ -262,19 +262,19 @@ class AdminTUController extends Controller
 
         $roles = Role::whereIn('name', $nama_role)->get();
 
-        return view('AdminTU.daftar_user.tambah_user', compact('roles'));
+        return view('admin_tu.daftar_user.tambah_user', compact('roles'));
     }
     public function daftar_mahasiswa()
     {
 
         $lists = Mahasiswa::all();
 
-        return view('AdminTU.daftar_user.daftar_mahasiswa', compact('lists'));
+        return view('admin_tu.daftar_user.daftar_mahasiswa', compact('lists'));
     }
     public function daftar_dosen()
     {
         $lists = Dosen::all();
-        return view('AdminTU.daftar_user.daftar_dosen', compact('lists'));
+        return view('admin_tu.daftar_user.daftar_dosen', compact('lists'));
     }
 
 
@@ -300,8 +300,8 @@ class AdminTUController extends Controller
         // dd($data_kolokium);
 
 
-        // return view('AdminTU.verif_berkas.verif_kolokium_awal', compact('lists', 'data_kolokium', 'nama'));
-        return view('AdminTU.verif_berkas.verif_2', compact('lists', 'data_kolokium', 'nama'));
+        // return view('admin_tu.verif_berkas.verif_kolokium_awal', compact('lists', 'data_kolokium', 'nama'));
+        return view('admin_tu.verif_berkas.verif_2', compact('lists', 'data_kolokium', 'nama'));
     }
 
     public function verif_kolokium_awal_download($id)
@@ -344,7 +344,7 @@ class AdminTUController extends Controller
             $lists_array = $lists_id->toArray();
             $lists = Mahasiswa::whereIN('id', $lists_array)->get();
         } else {
-            return view('AdminTU.verif_berkas.verif_pengajuan_review', compact(
+            return view('admin_tu.verif_berkas.verif_pengajuan_review', compact(
                 'lists',
                 'pengajuan_review_status',
                 'check_admin',
@@ -394,7 +394,7 @@ class AdminTUController extends Controller
         ];
 
 
-        return view('AdminTU.verif_berkas.verif_pengajuan_review', compact(
+        return view('admin_tu.verif_berkas.verif_pengajuan_review', compact(
             'lists',
             'pengajuan_review_status',
             'check_admin',
@@ -490,7 +490,7 @@ class AdminTUController extends Controller
             'kartu_studi' => "Kartu Studi",
             'cek_plagiasi' => "Cek Plagiasi",
         ];
-        return view('AdminTU.verif_berkas.verif_pengajuan_nilai_publikasi', compact('lists', 'nama'));
+        return view('admin_tu.verif_berkas.verif_pengajuan_nilai_publikasi', compact('lists', 'nama'));
     }
 
     public function verif_pengajuan_nilai_publikasi_download($id)
@@ -546,7 +546,7 @@ class AdminTUController extends Controller
             $dosen_pembimbing_2[] = Dosen::where('id', $key->dosen2_id)->get('name');
         }
         // dd($dosen_pembimbing_1);
-        $pdf = PDF::loadView('adminTU.cetak_mhs', compact('lists', 'dosen_pembimbing_1', 'dosen_pembimbing_2'));
+        $pdf = PDF::loadView('admin_tu.cetak_mhs', compact('lists', 'dosen_pembimbing_1', 'dosen_pembimbing_2'));
         return $pdf->inline('test.pdf');
     }
 
@@ -592,7 +592,7 @@ class AdminTUController extends Controller
         $users = User::whereIn('id', $user_with_permission)->get();
         $dosen = Dosen::whereIN('user_id', $user_with_permission)->get();
         // dd($users);
-        return view('adminTU.daftar_user.tambah_permissions', compact('cond', 'permissions', 'users', 'dosen', 'dosen_all', 'nama_permission'));
+        return view('admin_tu.daftar_user.tambah_permissions', compact('cond', 'permissions', 'users', 'dosen', 'dosen_all', 'nama_permission'));
     }
 
     public function apply_permission(Request $request)

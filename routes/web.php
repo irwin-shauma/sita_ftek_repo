@@ -33,7 +33,6 @@ if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
 // });
 
 Auth::routes();
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['permission:mahasiswa']], function () {

@@ -1,11 +1,8 @@
 @extends('template.main')
 @section('title', 'Cetak Surat Tugas')
 @section('content')
-
 @if ($data_mhs->progress > 1 )
-    
   @if ($data_nomor_surat->judul === null)
-
     <form method="post" action="{{ route('surat_tugas') }}">
       @csrf
       <div class="form-group">
@@ -17,20 +14,17 @@
         <input type="hidden" class="form-control" id="dosen_2" name="dosen_2" value="{{ $data_dosen[1] }}">
         <input type="hidden" class="form-control" id="tanggal_awal" name="tanggal_awal" value="{{ $data_nomor_surat->tanggal_awal }}">
         <input type="hidden" class="form-control" id="tanggal_akhir" name="tanggal_akhir" value="{{ $data_nomor_surat->tanggal_akhir }}">
-
-        
         @if ($jenis_nim === '61')
           <input type="hidden" class="form-control" id="kaprogdi" name="kaprogdi" value="{{ $kaprogdi_elektro }}">
         @elseif ($jenis_nim === '62')
           <input type="hidden" class="form-control" id="kaprogdi" name="kaprogdi" value="{{ $kaprogdi_tekkom }}">
         @endif
-
         <label for="spesifikasi_skripsi">Spesifikasi</label>
         <textarea name="spesifikasi_skripsi" id="spesifikasi_skripsi" cols="30" rows="10" placeholder="Masukkan spesifikasi skripsi anda"></textarea>
       
         <label class="mt-3" for="uraian_tugas_skripsi">Uraian Tugas</label>
         <textarea class="mb-3" name="uraian_tugas_skripsi" id="uraian_tugas_skripsi" cols="30" rows="10" placeholder="Masukkan uraian tugas skripsi anda"></textarea>
-    
+
         <label class="mt-3" for="jenis_skripsi">Pilih Jenis Skripsi</label>
         <select id="jenis_skripsi" name="jenis_skripsi" class="custom-select mb-3">
           <option value="penelitian">Penelitian</option>
@@ -45,16 +39,13 @@
           <button type=”submit” name='action' value="preview" class="btn btn-info btn-block" onclick="$('form').attr('target', '_blank');">Preview</button>
         </div>
         <div class="col">
-          {{-- <button type=”submit” name='submit_form' value="simpan" class="btn btn-success btn-block">Simpan</button> --}}
           <button type="button" name='simpan' class="btn btn-success btn-block" data-toggle="modal" data-target="#modal_simpan">Simpan</button>
         </div>
       </div>
 
-    <!-- Modal -->
       <div class="modal fade" id="modal_simpan">
         <div class="modal-dialog">
           <div class="modal-content bg-white">
-
             <div class="modal-header">
               <h4 class="modal-title">Konfirmasi</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -74,13 +65,8 @@
             </div>
 
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>
-
-
-      {{-- <button type=”submit” class="btn btn-danger btn-block">Save</button> --}}
     </form>
 
   @else
@@ -92,12 +78,9 @@
     <h3>Silahkan download surat tugas skripsi anda disini : </h3>
     <a href="{{ route('download_surat_tugas', ['user' =>$data_mhs->nim]) }}" class="btn btn-lg btn-warning">Download</a>  
   @endif
-
 @else
     <p>Anda belum menyelesaikan Kolokium Awal!</p>
-
 @endif
-
 @endsection
 
 @push('ckeditor')

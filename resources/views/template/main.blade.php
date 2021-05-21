@@ -20,20 +20,18 @@
     <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-
     {{-- Icon for the web --}}
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png') }}">
-
   </head>
 
 {{-- <body class="hold-transition sidebar-mini layout-fixed"> --}}
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  @include('template.navbar')
 
+  @include('template.navbar')
   @include('template.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
@@ -48,7 +46,6 @@
           </div>
         </div><!-- /.container-fluid -->
     </section>
-    
     
   @if (session('success'))
   <div class="alert alert-success alert-dismissible ml-3 mr-3">

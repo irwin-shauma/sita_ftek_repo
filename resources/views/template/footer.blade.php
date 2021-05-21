@@ -26,25 +26,12 @@ src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yEx
 <script src="{{ asset('template/dist/js/demo.js') }}"></script>
 
 
-<!-- AdminLTE App -->
-{{-- <script src="../../dist/js/adminlte.min.js"></script> --}}
-
-{{-- <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script> --}}
-
-{{-- from app.blade --}}
-{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-
-{{-- DataTables --}}
-{{-- <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script> --}}
-
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-{{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script> --}}
 <script>
 
 $(document).ready( function () {
@@ -74,22 +61,6 @@ $(function () {
 @stack('calculation')
 @stack('calculation2')
 @stack('popover')
-{{-- @stack('submit_with_a') --}}
 
 </body>
 </html>
-
-{{-- 
-    
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-
-    
-    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    
-    --}}
