@@ -1,3 +1,18 @@
+## Dokumentasi
+
+![Annotation 2022-03-14 200814](https://user-images.githubusercontent.com/95294393/158180302-c0531001-cbc9-4e68-8805-f823b260cb3c.png)
+<p align="center">Tampilan awal login</p>
+
+
+![Screenshot (1176)](https://user-images.githubusercontent.com/95294393/158180490-86eb98c1-479b-4027-918c-7932fe410bd0.png)
+<p align="center">Tampilan awal admin</p>
+
+![Screenshot (1177)](https://user-images.githubusercontent.com/95294393/158180520-a7a6e8de-b0c3-4a92-99de-28b5ab3b7de4.png)
+<p align="center">Tampilan tambah user</p>
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
